@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using EventSite.Context;
 using EventSite.Models;
+using System.Data.Entity;
 
 namespace EventSite.Controllers
 {
@@ -19,7 +20,7 @@ namespace EventSite.Controllers
         {
             var ageGroupQuery = (AgeGroup)Enum.Parse(typeof(AgeGroup), ageGroup);
 
-            return db.Events.Where(w => w.Title.ToLower().Contains(query.ToLower()) || 
+            return db.Events.Include(i => i.AttendeeList).Where(w => w.Title.ToLower().Contains(query.ToLower()) || 
             w.Tagline.ToLower().Contains(query.ToLower()) ||
             w.Price == query || 
             w.Description.ToLower().Contains(query.ToLower()) ||
@@ -31,7 +32,7 @@ namespace EventSite.Controllers
         [HttpGet]
         public IQueryable<Models.Event> GetEventsByDate(DateTime query)
         {
-            return db.Events.Where(w => w.Date.Year == query.Year && w.Date.Month == query.Month && w.Date.Day == query.Day);
+            return db.Events.Include(i => i.AttendeeList).Include(i => i.UsersWaitlist).Include(i => i.Comments).Where(w => w.Date.Year == query.Year && w.Date.Month == query.Month && w.Date.Day == query.Day);
         }
 
 
@@ -46,7 +47,7 @@ namespace EventSite.Controllers
         [HttpGet]
         public IHttpActionResult GetOneEvent(int id)
         {
-            var @event = db.Events.SingleOrDefault(s => s.Id == id);
+            var @event = db.Events.Include(i => i.AttendeeList).Include(i => i.UsersWaitlist).Include(i => i.Comments).SingleOrDefault(s => s.Id == id);
             if (@event == null)
             {
                 return NotFound();
