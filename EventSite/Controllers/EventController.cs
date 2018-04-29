@@ -89,10 +89,18 @@ namespace EventSite.Controllers
             var @event = db.Events.SingleOrDefault(s => s.Id == ID);
             @event.AttendeeList.Remove(unattending);
             db.SaveChanges();
+            var waitlist = @event.UsersWaitlist.FirstOrDefault();
+            if(waitlist != null)
+            {
+                @event.UsersWaitlist.Remove(waitlist);
+                @event.AttendeeList.Add(waitlist);
+                db.SaveChanges();
+
+            }
             return Ok();
         }
 
-
+       
         [Route("events")]
         [HttpPost]
         public IHttpActionResult AddEvent(Event ev)

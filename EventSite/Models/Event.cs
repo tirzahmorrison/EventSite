@@ -33,10 +33,10 @@ namespace EventSite.Models
         public int? OrganizerId { get; set; }
         public User Organizer { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public virtual ICollection<Comment> Comments { get; set; } 
 
-        public virtual ICollection<User> UsersWaitlist { get; set; } = new HashSet<User>();
+        public virtual ICollection<User> UsersWaitlist { get; set; }
 
-        public virtual ICollection<User> AttendeeList { get; set; } = new HashSet<User>();
+        public virtual ICollection<User> AttendeeList { get; set; } 
     }
 }

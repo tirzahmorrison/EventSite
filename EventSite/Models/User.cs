@@ -14,9 +14,9 @@ namespace EventSite.Models
         public int Age { get; set; }
 
         [InverseProperty("AttendeeList")]
-        public virtual ICollection<Event> Events { get; set; } = new HashSet<Event>();
+        public virtual ICollection<Event> Events { get; set; }
 
         [InverseProperty("UsersWaitlist")]
-        public virtual ICollection<Event> WaitlistedEvents { get; set; } = new HashSet<Event>();
+        public virtual ICollection<Event> WaitlistedEvents { get; set; } 
     }
 }
