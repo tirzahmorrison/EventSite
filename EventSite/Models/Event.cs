@@ -26,6 +26,8 @@ namespace EventSite.Models
         public AgeGroup AgeGroup { get; set; }
         public string KeyWord { get; set; }
         public int? AttendeeCount { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
 
         public  int? CityId { get; set; }
         public City City { get; set; }

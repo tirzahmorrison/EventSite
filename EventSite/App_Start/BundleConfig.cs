@@ -10,7 +10,7 @@ namespace EventSite
         {
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.min.js",
-                "~/Scripts/angular-route/.min.js",
+                "~/Scripts/angular-route.min.js",
                 "~/Scripts/app.js"
                 ));
 

@@ -123,9 +123,27 @@ namespace EventSite.Controllers
 
         [Route("events/{ID}/waitlist")]
         [HttpPost]
-        public IHttpActionResult AddWaitlist(int ID, Comment comment)
+        public IHttpActionResult AddWaitlist(int ID, string email)
         {
+            var waitlist = db.Users.FirstOrDefault(f => f.Email == email);
+            if (waitlist == null)
+            {
+                waitlist = new User { Email = email };
+                db.Users.Add(waitlist);
+                db.SaveChanges();
+            }
+            var @event = db.Events.SingleOrDefault(s => s.Id == ID);
+            @event.UsersWaitlist.Add(waitlist);
+            db.SaveChanges();
             return Ok();
+        }
+
+        [Route("events/{ID}/nearby")]
+        [HttpGet]
+        public IQueryable<Event> GetNearby(int ID)
+        {
+            var target = db.Events.First(f => f.Id == ID);
+            return db.Events.Where(w => w.CityId == target.CityId);
         }
     }
 }
