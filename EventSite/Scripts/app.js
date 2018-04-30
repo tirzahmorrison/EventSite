@@ -26,7 +26,16 @@ app.controller("mainController", ["$scope", "$http",
         }).then(resp => {
             console.dir(resp.data)
             $scope.events=_.chunk(resp.data, 3)
-        })
+           })
+       $scope.search = () => {
+           $http({
+               method: "GET",
+               url: window.location.origin + `/events/search?query=${$scope.query}&ageGroup=0`
+           }).then(resp => {
+               console.dir(resp.data)
+               $scope.events = _.chunk(resp.data, 3)
+           })
+       }
     }
 ])
 
@@ -38,7 +47,39 @@ app.controller("eventController", ["$scope", "$routeParams", "$http",
         }).then(resp => {
             console.dir(resp.data)
             $scope.item=resp.data
-        })
+            })
+        $scope.attend = () => {
+            let email = prompt("please enter your email: ")
+            $http({
+                method: "POST",
+                url: window.location.origin + `/events/${$routeParams.ID}/attendees?email=${email}`
+            }).then(resp => {
+                console.dir(resp.data)
+                $scope.item = resp.data
+            })
+        }
+
+        $scope.cancel = () => {
+            let email = prompt("please enter your email: ")
+            $http({
+                method: "DELETE",
+                url: window.location.origin + `/events/${$routeParams.ID}/attendees?email=${email}`
+            }).then(resp => {
+                console.dir(resp.data)
+                $scope.item = resp.data
+            })
+        }
+
+        $scope.joinWaitlist = () => {
+            let email = prompt("please enter your email: ")
+            $http({
+                method: "POST",
+                url: window.location.origin + `/events/${$routeParams.ID}/waitlist?email=${email}`
+            }).then(resp => {
+                console.dir(resp.data)
+                $scope.item = resp.data
+            })
+        }
     }
 ])
 console.log("done loading")

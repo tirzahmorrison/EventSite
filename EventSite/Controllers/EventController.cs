@@ -20,11 +20,11 @@ namespace EventSite.Controllers
         {
             var ageGroupQuery = (AgeGroup)Enum.Parse(typeof(AgeGroup), ageGroup);
 
-            return db.Events.Include(i => i.AttendeeList).Where(w => w.Title.ToLower().Contains(query.ToLower()) || 
+            return db.Events.Include(i => i.AttendeeList).Where(w => (w.Title.ToLower().Contains(query.ToLower()) || 
             w.Tagline.ToLower().Contains(query.ToLower()) ||
             w.Price == query || 
             w.Description.ToLower().Contains(query.ToLower()) ||
-            w.KeyWord.ToLower().Contains(query.ToLower()) ||
+            w.KeyWord.ToLower().Contains(query.ToLower())) &&
             w.AgeGroup == ageGroupQuery);
         }
 

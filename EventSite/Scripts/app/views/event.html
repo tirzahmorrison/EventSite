@@ -69,19 +69,8 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">{{item.Description}}</p>
-
-                <blockquote class="blockquote">
-                    <p class="mb-0">{{item.Tagline}}</p>
-                    <footer class="blockquote-footer">
-                        Someone famous in
-                        <cite title="Source Title">Source Title</cite>
-                    </footer>
-                </blockquote>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                <p class="lead">{{item.Tagline}}</p>
+                <p>{{item.Description}}</p>
 
                 <hr>
 
@@ -205,9 +194,9 @@
                                 Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="#" ng-click="attend()">Attend Event</a></li>
+                                <li><a href="#"ng-click="cancel()">Cancel RSVP</a></li>
+                                <li><a href="#"ng-click="joinWaitlist()">Join Waitlist</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                             </ul>

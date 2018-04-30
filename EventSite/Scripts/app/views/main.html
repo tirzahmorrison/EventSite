@@ -24,7 +24,7 @@
             </ul>
             <form class="navbar-form navbar-nav ml-auto">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search All">
+                    <input type="text" class="form-control" placeholder="Search All" ng-model="query" ng-keypress="$event.keyCode==13?search():null">
                 </div>
             </form>
         </div>
