@@ -16,31 +16,6 @@ namespace EventSite.Migrations
 
         protected override void Seed(EventSite.Context.EventContext context)
         {
-            var firstEvent = new Event
-            {
-                Title = "PROburg Painters",
-                Tagline = "We love to paint.",
-                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                Date = new DateTime(2019, 7, 9),
-                Price = "",
-                AgeGroup = AgeGroup.EVERYONE,
-                KeyWord = "painting, paint, painter, art",
-
-            };
-
-            var events = new List<Event>
-            {
-                firstEvent,
-                new Event {Title = "PROberg Wrestlers", Tagline = "We are men.", Description = "Not much to say, men wresting.", Date = new DateTime(2019, 7, 9), Price = "", AgeGroup = AgeGroup.DRINKINGADULT, KeyWord = "wrestling, men" }
-            };
-
-            events.ForEach(@event =>
-            {
-                context.Events.AddOrUpdate(a => a.Title, @event);
-            });
-
-            context.SaveChanges();
-
             var newCity = new City
             {
                 CityName = "PROburg",
@@ -51,6 +26,7 @@ namespace EventSite.Migrations
             context.Cities.AddOrUpdate(c => c.CityName, newCity);
 
             context.SaveChanges();
+
 
             var firstUser = new User
             {
@@ -72,6 +48,36 @@ namespace EventSite.Migrations
             });
 
             context.SaveChanges();
+
+            var firstEvent = new Event
+            {
+                Title = "PROburg Painters",
+                Tagline = "We love to paint.",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                Date = new DateTime(2019, 7, 9),
+                Price = "",
+                AgeGroup = AgeGroup.EVERYONE,
+                KeyWord = "painting, paint, painter, art",
+                City = newCity,
+                Organizer = firstUser
+
+            };
+
+            var events = new List<Event>
+            {
+                firstEvent,
+                new Event {Title = "PROberg Wrestlers", Tagline = "We are men.", Description = "Not much to say, men wresting.", Date = new DateTime(2019, 7, 9), Price = "", AgeGroup = AgeGroup.DRINKINGADULT, KeyWord = "wrestling, men", City = newCity }
+            };
+
+            events.ForEach(@event =>
+            {
+                context.Events.AddOrUpdate(a => a.Title, @event);
+            });
+
+            context.SaveChanges();
+
+            
+
         }
     }
 }

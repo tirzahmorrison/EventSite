@@ -14,6 +14,10 @@ namespace EventSite
                 "~/Scripts/app.js"
                 ));
 
+            bundles.Add(new ScriptBundle("~/bundles/lodash").Include(
+                "~/Scripts/lodash.min.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 

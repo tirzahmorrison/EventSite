@@ -40,7 +40,7 @@ namespace EventSite.Controllers
         [HttpGet]
         public IEnumerable<Event> GetAllEvents()
         {
-            return db.Events.OrderBy(o => o.Title).ToList();
+            return db.Events.Include(i => i.City).OrderBy(o => o.Title).ToList();
         }
 
         [Route("events/{id:int}")]

@@ -1,7 +1,6 @@
-﻿ <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="#">Preetup</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -9,20 +8,25 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
-                        Home
+                        Create Event
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="#">Log In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="#">Notifications</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="#">Create Account</a>
                 </li>
             </ul>
+            <form class="navbar-form navbar-nav ml-auto">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search All">
+                </div>
+            </form>
         </div>
     </div>
 </nav>
@@ -33,72 +37,129 @@
     <!-- Heading Row -->
     <div class="row my-4">
         <div class="col-lg-8">
-            <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+            <img class="img-fluid rounded" src="/Content/images/kisspng-oriental-pearl-tower-cartoon-cartoon-cute-color-shanghai.png" alt="">
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
-            <h1>Business Name or Tagline</h1>
-            <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-            <a class="btn btn-primary btn-lg" href="#">Call to Action!</a>
+            <h1>PROburg Preetup</h1>
+            <div class="card my-4">
+                <h5 class="card-header bg-primary text-white">Search by Age Group: </h5>
+                <div class="card-body">
+                    <div class="btn-group">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Action <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <a class="btn btn-primary btn-lg" href="#">Join Us Now!</a>
         </div>
         <!-- /.col-md-4 -->
     </div>
     <!-- /.row -->
     <!-- Call to Action Well -->
-    <div class="card text-white bg-secondary my-4 text-center">
+    <div class="card text-white bg-info my-4 text-center">
         <div class="card-body">
             <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
         </div>
     </div>
 
     <!-- Content Row -->
-    <div class="row">
-        <div class="col-md-4 mb-4">
+    <div class="row" ng-repeat="chunk in events">
+        <div class="col-md-4 mb-4" ng-repeat="item in chunk">
             <div class="card h-100">
                 <div class="card-body">
-                    <h2 class="card-title">Card One</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                    <h2 class="card-title">{{item.Title}}</h2>
+                    <p class="card-text">{{item.Tagline}}</p>
+                    <h5>PROburg, Florida</h5>
+                    <h5>Event on {{item.Date | date:'longDate'}}</h5>
                 </div>
                 <div class="card-footer">
-                    <a href="#" class="btn btn-primary">More Info</a>
+                    <a href="#!/events/{{item.Id}}" class="btn btn-primary">Join Event</a>
                 </div>
             </div>
         </div>
         <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card Two</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-        </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card Three</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">More Info</a>
-                </div>
-            </div>
-        </div>
+    
         <!-- /.col-md-4 -->
 
     </div>
+
     <!-- /.row -->
+    <section class="section">
+
+        <!--Section heading-->
+        <h2 class="section-heading h1 pt-4 mb-5">Contact us</h2>
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <!--Google map-->
+                <div id="map-container-8" class="z-depth-1-half map-container mb-4" style="height: 200px"></div>
+
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-4">
+                        <form>
+
+                            <div class="md-form">
+                                <input type="text" id="contact-name" class="form-control">
+                                <label for="contact-name" class="">Your name</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="contact-email" class="form-control">
+                                <label for="contact-email" class="">Your email</label>
+                            </div>
+
+                            <div class="md-form">
+                                <input type="text" id="contact-Subject" class="form-control">
+                                <label for="contact-Subject" class="">Subject</label>
+                            </div>
+
+                        </form>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-4">
+                        <div class="md-form primary-textarea">
+                            <textarea type="text" id="contact-message" class="md-textarea form-control mb-0" rows="5" style="padding-bottom: 1.2rem;"></textarea>
+                            <label for="contact-message">Your message</label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <a class="btn btn-mdb-color btn-block">Send Message</a>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+
+            </div>
+
+        </div>
 
 </div>
 <!-- /.container -->
 <!-- Footer -->
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Suncoast Guild 2018</p>
     </div>
     <!-- /.container -->
 </footer>
